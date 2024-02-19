@@ -1,10 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import { ListItem, mockDataList } from "../mock-data/list";
+import { v4 as uuidv4 } from "uuid";
 
 interface TodoContextProps {
   toDoList: ListItem[];
   onSubmitInput: (value: string) => void;
-  onDeleteItem: (id: number) => void;
+  onDeleteItem: (id: string) => void;
 }
 export const TodoContext = createContext<TodoContextProps>({
   toDoList: [],
@@ -21,12 +22,12 @@ export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
       alert("Item already exists");
     } else {
       setToDoList((prevList) => {
-        return [...prevList, { id: prevList.length + 1, name: value }];
+        return [...prevList, { id: uuidv4(), name: value }];
       });
     }
   };
 
-  const onDeleteItem = (id: number) => {
+  const onDeleteItem = (id: string) => {
     setToDoList((prevList) =>
       prevList.filter((toDoItem) => toDoItem.id !== id)
     );
