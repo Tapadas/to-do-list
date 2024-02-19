@@ -1,2 +1,1 @@
-# to-do-list
-To do List - React
+Simple To Do List App created with React and Typescript

@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NewTodoInput from "./components/new-to-do-input";
+import ToDoList from "./components/to-do-list";
+import { TodoProvider } from "./context/ToDoContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TodoProvider>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          top: "50%",
+          left: "50%",
+          position: "fixed",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <ToDoList />
+        <NewTodoInput />
+      </div>
+    </TodoProvider>
   );
 }
 
