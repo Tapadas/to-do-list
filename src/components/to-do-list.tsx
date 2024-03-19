@@ -4,8 +4,6 @@ import ToDoItem from "./to-do-item";
 const ToDoList = () => {
   const { toDoList = [] } = useTodoContext();
 
-  console.log(toDoList);
-
   return (
     <ul>
       {toDoList.map((item) => (
